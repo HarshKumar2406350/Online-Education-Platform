@@ -39,6 +39,7 @@ public class UserController {
         UserDto loggedInUser = userService.login(loginDto, response);
         
         Map<String, Object> responseBody = new HashMap<>();
+
         responseBody.put("message", "User logged in successfully");
         responseBody.put("user", loggedInUser);
         responseBody.put("token", loggedInUser.getToken());
@@ -63,6 +64,8 @@ public class UserController {
                 UserDto userDetails = userService.getUserDetails(jwtToken);
         
         Map<String, Object> response = new HashMap<>();
+        response.put("status",200);
+        response.put("message", "User details retrieved successfully");
         response.put("user", userDetails);
         
         return ResponseEntity.ok(response);
@@ -77,6 +80,7 @@ public class UserController {
         
         Map<String, Object> response = new HashMap<>();
         response.put("message", "User updated successfully");
+        response.put("status",200);
         response.put("user", updatedUser);
         
         return ResponseEntity.ok(response);

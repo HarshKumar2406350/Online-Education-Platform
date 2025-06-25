@@ -19,4 +19,7 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, String> 
     
     // Delete enrollment by course and student
     void deleteByCourseIdAndStudentId(String courseId, String studentId);
+
+    // Find enrollments by course and instructor
+    List<Enrollment> findByCourseIdAndStudentId(String courseId, String instructorId);
 }

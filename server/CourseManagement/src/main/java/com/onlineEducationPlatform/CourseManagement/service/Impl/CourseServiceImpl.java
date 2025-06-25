@@ -3,6 +3,7 @@ package com.onlineEducationPlatform.CourseManagement.service.Impl;
 import com.onlineEducationPlatform.CourseManagement.dto.request.CourseRequest;
 import com.onlineEducationPlatform.CourseManagement.dto.response.CourseDeleteResponse;
 import com.onlineEducationPlatform.CourseManagement.dto.response.CourseResponse;
+import com.onlineEducationPlatform.CourseManagement.dto.response.ValidationResponse;
 import com.onlineEducationPlatform.CourseManagement.entity.Course;
 import com.onlineEducationPlatform.CourseManagement.exception.CourseNotFoundException;
 import com.onlineEducationPlatform.CourseManagement.exception.UnauthorizedAccessException;
@@ -10,6 +11,8 @@ import com.onlineEducationPlatform.CourseManagement.mapper.CourseMapper;
 import com.onlineEducationPlatform.CourseManagement.repository.CourseRepository;
 import com.onlineEducationPlatform.CourseManagement.service.CourseService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -19,8 +22,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CourseServiceImpl implements CourseService {
 
+    @Autowired
     private final CourseRepository courseRepository;
+
+    @Autowired
     private final CourseMapper courseMapper;
+
+    @Autowired
+    private ModelMapper modelmapper;
 
     @Override
     @Transactional
@@ -65,6 +74,21 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public ValidationResponse ValidateCourseOwnership(String courseId, String instructorId) {
+        Course course = courseRepository.findById(courseId)
+            .orElseThrow(() -> new CourseNotFoundException(courseId));
+        if (!course.getInstructorId().equals(instructorId)) {
+            throw new UnauthorizedAccessException("You are not authorized to view this course");
+        }
+        ValidationResponse  validationResponse = new ValidationResponse();
+        validationResponse.setValid(true);
+        validationResponse.setCourse(courseMapper.toResponse(course));
+        validationResponse.setEnrollment(null);
+
+        return validationResponse;
+    }
+
+    @Override
     public CourseResponse getCourseById(String courseId) {
         Course course = courseRepository.findById(courseId)
             .orElseThrow(() -> new CourseNotFoundException(courseId));
@@ -85,8 +109,5 @@ public class CourseServiceImpl implements CourseService {
             .collect(Collectors.toList());
     }
 
-    @Override
-    public boolean isInstructorOfCourse(String courseId, String instructorId) {
-        return courseRepository.existsByIdAndInstructorId(courseId, instructorId);
-    }
+
 }

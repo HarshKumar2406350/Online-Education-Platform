@@ -17,4 +17,6 @@ public interface CourseRepository extends JpaRepository<Course, String> {
     
     // Check if course exists and belongs to instructor
     boolean existsByIdAndInstructorId(String courseId, String instructorId);
+
+
 }

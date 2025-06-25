@@ -1,6 +1,6 @@
 package com.onlineEducationPlatform.CourseManagement.util;
 
-import org.springframework.beans.factory.annotation.Value;
+
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 
 public class CourseIdGenerator extends CustomIdGenerator {

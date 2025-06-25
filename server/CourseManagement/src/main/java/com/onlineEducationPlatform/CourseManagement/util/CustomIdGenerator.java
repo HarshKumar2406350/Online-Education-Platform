@@ -3,7 +3,6 @@ package com.onlineEducationPlatform.CourseManagement.util;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.IdentifierGenerator;
-import org.springframework.beans.factory.annotation.Value;
 import java.util.Random;
 
 public abstract class CustomIdGenerator implements IdentifierGenerator {

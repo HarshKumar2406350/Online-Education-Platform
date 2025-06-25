@@ -1,8 +1,9 @@
 package com.onlineEducationPlatform.userModule.service.Impl;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
-
+import org.slf4j.Logger;
 import java.util.EnumSet;
 import java.util.regex.Pattern;
 
@@ -32,6 +33,8 @@ public class UserServiceImpl implements UserService {
     private final JwtService jwtService;
     private final UserMapper userMapper;
 
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
     @Value("${cookie.jwt.name}")
     private String jwtCookieName;
 
@@ -50,6 +53,7 @@ public class UserServiceImpl implements UserService {
         }
 
         if (!EnumSet.allOf(UserRole.class).contains(userDto.getRole())) {
+
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid role");
     }
 
@@ -65,25 +69,35 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto login(LoginDto loginDto, HttpServletResponse response) {
+        logger.info("Attempting to login user with email: {}", loginDto.getEmail());
         User user = userRepository.findByEmail(loginDto.getEmail())
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials"));
+    
+        logger.info("User with email {} found", loginDto.getEmail());
+    
+
+        logger.info("Raw password from request: {}", loginDto.getPassword());
+        logger.info("Stored encoded password: {}", user.getPassword());
+    
 
         if (!passwordEncoder.matches(loginDto.getPassword(), user.getPassword())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
         }
-
+        
+        logger.info("User with email {} authenticated successfully", loginDto.getEmail());
+    
         if (!user.getRole().name().equals(loginDto.getRole())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid role");
         }
-
+    
         String token = jwtService.generateToken(user.getEmail(), user.getRole().name());
         setJwtCookie(response, token);
-
+    
         UserDto userDto = userMapper.toDto(user);
         userDto.setToken(token);
         return userDto;
     }
-
+    
     @Override
     public void logout(HttpServletResponse response) {
         Cookie cookie = new Cookie(jwtCookieName, null);
