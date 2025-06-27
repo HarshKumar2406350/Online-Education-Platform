@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="api-gateway" />
         <module name="userModule" />
+        <module name="service-registry" />
         <module name="AssignmentAndQuizModule" />
       </profile>
       <profile name="Annotation profile for CourseManagement" enabled="true">
@@ -24,6 +26,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="AssignmentAndQuizModule" options="-parameters" />
       <module name="CourseManagement" options="-parameters" />
+      <module name="api-gateway" options="-parameters" />
+      <module name="service-registry" options="-parameters" />
       <module name="userModule" options="-parameters" />
     </option>
   </component>
