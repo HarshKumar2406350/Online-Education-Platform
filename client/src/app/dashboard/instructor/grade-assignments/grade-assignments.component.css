@@ -1,0 +1,63 @@
+.grade-assignments-container {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .data-table{
+    color: #34495e;
+  }
+  
+  .grade-assignments-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #147b73;
+  }
+  
+  .assignments-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .assignments-table th,
+  .assignments-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+    font-size: 1rem;
+  }
+  
+  .assignments-table th {
+    background-color: #34495e;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .assignments-table tr:nth-child(even) {
+    background-color: #f4f4f4;
+  }
+  
+  .assignments-table tr:hover {
+    background-color: #e8f6f8;
+    cursor: pointer;
+  }
+  
+  .checked-row {
+    background-color: #d4edda; /* Green background for checked rows */
+  }
+  
+  .action-button.grade-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #3498db;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .action-button.grade-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }

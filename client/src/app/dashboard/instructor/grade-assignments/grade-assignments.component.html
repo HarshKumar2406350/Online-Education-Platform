@@ -1,0 +1,29 @@
+<div class="grade-assignments-container">
+    <h2>Grade Assignments</h2>
+    <table class="assignments-table">
+      <thead>
+        <tr>
+          <th>Submission ID</th>
+          <th>Student Email</th>
+          <th >Assignment ID</th>
+          <th aria-rowspan="2">Answer</th>
+          <th>Marks Obtained</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody class="data-table">
+        <tr *ngFor="let submission of submissions" [ngClass]="{'checked-row': submission.status === 'CHECKED'}">
+          <td>{{ submission.id }}</td>
+          <td>{{ submission.studentId }}</td>
+          <td>{{ submission.assignmentId }}</td>
+          <td>{{ submission.answer }}</td>
+          <td>{{ submission.marksObtained || 'Not Graded' }}</td>
+          <td>{{ submission.status }}</td>
+          <td>
+            <button class="action-button grade-button" *ngIf="submission.status !== 'CHECKED'" (click)="onGradeSubmission(submission.id)">Grade</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

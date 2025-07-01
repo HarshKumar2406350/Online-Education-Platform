@@ -1,0 +1,28 @@
+<div class="course-details-container" *ngIf="course">
+    <div class="top-row">
+      <!-- Course Details Box -->
+      <div class="course-details-box">
+        <h2>Course Details</h2>
+        <p><strong>Title:</strong> {{ course.title }}</p>
+        <p><strong>Category:</strong> {{ course.category }}</p>
+        <p><strong>Description:</strong> {{ course.description }}</p>
+        <p><strong>Instructor:</strong> {{ course.instructorId }}</p>
+        <p><strong>Enrollment Date:</strong> {{ enrollmentDate | date: 'medium' }}</p>
+        <p><strong>Created At:</strong> {{ course.createdAt | date: 'medium' }}</p>
+        <p><strong>Updated At:</strong> {{ course.updatedAt | date: 'medium' }}</p>
+      </div>
+  
+      <!-- Action Buttons Container -->
+      <div class="action-buttons-container">
+        <button class="action-button unenroll-button" (click)="onUnenroll()">Unenroll</button>
+        <button class="action-button view-assignments-button" (click)="onViewAssignments()">View Assignments</button>
+        <button class="action-button view-quizzes-button" (click)="onViewQuizzes()">View Quizzes</button>
+      </div>
+    </div>
+  
+    <!-- Course Description Box -->
+    <div class="course-description-box">
+      <h2>Course Description</h2>
+      <p>{{ course.description }}</p>
+    </div>
+  </div>

@@ -110,6 +110,7 @@ public class AssignmentServiceImpl implements AssignmentService {
     }
 
     private void validateCourseAccess(String courseId, String userId) {
+
         if (!courseValidationService.validateCourseAccess(courseId, userId)) {
             throw new UnauthorizedAccessException("User " + userId + " does not have access to course " + courseId);
         }

@@ -1,0 +1,16 @@
+<div class="progress-container">
+    <h2>Progress Overview</h2>
+    
+    <div *ngIf="enrolledCourses.length === 0" class="no-courses">
+      <p>No enrolled courses found. Please enroll in a course to track your progress.</p>
+    </div>
+  
+    <div class="progress-grid">
+      <div *ngFor="let course of enrolledCourses; let i = index" class="course-progress">
+        <h3>{{ course.course.title }}</h3>
+        <div class="chart-wrapper">
+          <canvas id="progressChart-{{ i }}"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>

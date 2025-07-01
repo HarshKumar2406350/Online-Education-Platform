@@ -1,0 +1,19 @@
+<div class="quizzes-container">
+    <h2>Quizzes for Course: {{ courseId }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let quiz of quizzes">
+          <td>{{ quiz.question }}</td>
+          <td>
+            <button class="answer-button" (click)="onAnswerQuiz(quiz.id)">Answer Quiz</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

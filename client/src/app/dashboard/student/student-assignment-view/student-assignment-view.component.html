@@ -1,0 +1,23 @@
+<div class="assignments-container">
+    <h2>Assignments for Course: {{ courseId }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let assignment of assignments">
+          <td>{{ assignment.title }}</td>
+          <td>{{ assignment.description }}</td>
+          <td>{{ assignment.dueDate | date: 'medium' }}</td>
+          <td>
+            <button class="submit-button" (click)="onSubmitAnswer(assignment.id)">Submit Answer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

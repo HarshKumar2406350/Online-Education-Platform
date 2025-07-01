@@ -1,0 +1,10 @@
+<div class="manage-courses">
+    <h2>Manage Courses</h2>
+    <div class="courses-grid">
+      <app-course-card
+        *ngFor="let course of courses"
+        [course]="course"
+        (click)="onCourseClick(course.id)"
+      ></app-course-card>
+    </div>
+  </div>

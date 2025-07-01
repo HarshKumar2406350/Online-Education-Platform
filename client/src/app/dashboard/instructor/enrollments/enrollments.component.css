@@ -1,0 +1,72 @@
+.enrollments-container {
+    max-width: 900px; /* Increased width for better spacing */
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px; /* Larger border radius for modern look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  }
+  
+  h2 {
+    font-size: 1.8rem; /* Larger font size for heading */
+    margin-bottom: 1.5rem;
+    color: #147b73;
+    text-align: center; /* Center the heading */
+  }
+  
+  .toggle-button {
+    display: block; /* Center the button */
+    margin: 0 auto 1.5rem;
+    padding: 0.75rem 2rem; /* Increased padding for better spacing */
+    background-color: #4CAF50; /* Green shade for a clean and professional look */
+    color: #ffffff; /* White text for contrast */
+    border: none;
+    border-radius: 8px; /* Rounded corners for modern look */
+    cursor: pointer;
+    font-size: 1.125rem; /* Larger font size for better readability */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .toggle-button:hover {
+    background-color: #388E3C; /* Darker green shade for hover effect */
+    transform: scale(1.05); /* Slight scaling effect */
+  }
+  
+  .enrollments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .enrollments-table th,
+  .enrollments-table td {
+    padding: 1rem; /* Increased padding for better spacing */
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 1rem; /* Larger font size for readability */
+  }
+  
+  .enrollments-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    text-transform: uppercase; /* Make headers uppercase for emphasis */
+    color: #333333; /* Darker text color for better visibility */
+  }
+  
+  .enrollments-table tr {
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for row colors and font color */
+  }
+  
+  .enrollments-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Gray for alternate rows */
+    color: #333333; /* Darker font color for gray rows */
+  }
+  
+  .enrollments-table tr:nth-child(odd) {
+    background-color: #ffffff; /* White for alternate rows */
+    color: #000000; /* Black font color for white rows */
+  }
+  
+  .enrollments-table tr:hover {
+    opacity: 0.95; /* Slight hover effect */
+  }

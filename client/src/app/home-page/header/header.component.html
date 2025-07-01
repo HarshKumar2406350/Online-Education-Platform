@@ -1,0 +1,18 @@
+<header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="Online_Education_Platform_Icon.png" alt="Online Education Platform" />
+      </div>
+      <div class="title">
+        <h1>Online Education Platform</h1>
+      </div>
+      <div class="navigation">
+        <!-- Show Login and Sign Up buttons only on the home page and when user is not logged in -->
+        <ng-container *ngIf="isHomePage && !isLoggedIn">
+          <button class="logInButton" routerLink="/login">Login</button>
+          <h1>|</h1>
+          <button class="signUpButton" routerLink="/register">Sign Up</button>
+        </ng-container>
+      </div>
+    </div>
+  </header>

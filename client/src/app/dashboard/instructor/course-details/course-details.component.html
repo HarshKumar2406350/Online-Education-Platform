@@ -1,0 +1,29 @@
+<div class="course-details-container">
+  <!-- Row with Course Details and Buttons -->
+  <div class="top-row">
+    <div class="course-details-box">
+      <h2>Course Details</h2>
+      <p><strong>Title: </strong> {{ course.title }}</p>
+      <p><strong>Category: </strong> {{ course.category }}</p>
+      <p><strong>Instructor: </strong> {{ course.instructorId }}</p>
+      <p><strong>Created At: </strong> {{ course.createdAt | date:'EEEE, MMMM d, y h:mm a' }}</p>
+      <p><strong>Updated At: </strong> {{ course.updatedAt | date:'EEEE, MMMM d, y h:mm a' }}</p>
+    </div>
+
+    <div class="action-buttons-container">
+      <button class="action-button delete-button" (click)="onDeleteCourse()">Delete Course</button>
+      <button class="action-button edit-button" (click)="onEditCourse()">Edit Course</button>
+      <button class="action-button shared-button" (click)="onAddAssignment()">Add Assignment</button>
+      <button class="action-button shared-button" (click)="onAddQuiz()">Add Quiz</button>
+      <button class="action-button shared-button" (click)="onViewAssignments()">View Assignments</button>
+      <button class="action-button shared-button" (click)="onViewQuizzes()">View Quizzes</button>
+      <button class="action-button shared-button" (click)="onGradeAssignments()">Grade Assignments</button>
+    </div>
+  </div>
+
+  <!-- Description Box -->
+  <div class="course-description-box">
+    <h2>Description</h2>
+    <p>{{ course.description }}</p>
+  </div>
+</div>

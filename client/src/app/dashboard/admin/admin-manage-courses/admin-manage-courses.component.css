@@ -1,0 +1,20 @@
+.manage-courses {
+    padding: 2rem;
+    background-color: #f9f9f9; /* Light background for better contrast */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #2c3e50; /* Darker color for better readability */
+    margin-bottom: 1.5rem;
+    text-align: center; /* Center the heading */
+  }
+  
+  .courses-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center; /* Center the course cards */
+  }

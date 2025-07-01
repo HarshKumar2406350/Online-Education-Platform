@@ -1,0 +1,22 @@
+<div class="enrollments-container">
+    <h2>Enrollment Insights</h2>
+    <button class="toggle-button" (click)="toggleSort()">
+      Toggle Sort (Currently: {{ sortedBy }})
+    </button>
+    <table class="enrollments-table">
+      <thead>
+        <tr>
+          <th>Course Title</th>
+          <th>Student ID</th>
+          <th>Enrollment Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let enrollment of enrollments; let i = index" [style.backgroundColor]="rowColors[i]">
+          <td>{{ enrollment.course.title }}</td>
+          <td>{{ enrollment.studentId }}</td>
+          <td>{{ enrollment.enrollmentDate | date:'EEEE, MMMM d, y h:mm a' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

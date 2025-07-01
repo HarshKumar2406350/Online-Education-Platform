@@ -1,0 +1,17 @@
+<div class="answer-quiz-container">
+    <h2>Answer Quiz</h2>
+    <p><strong>Question:</strong> {{ quiz.question }}</p>
+    <form (ngSubmit)="onSubmitAnswer()">
+      <div class="options" *ngFor="let option of quiz.answerOptions">
+        <input
+          type="radio"
+          [value]="option"
+          name="answer"
+          [(ngModel)]="selectedAnswer"
+          required
+        />
+        {{ option }}
+      </div>
+      <button type="submit" class="submit-button">Submit Answer</button>
+    </form>
+  </div>

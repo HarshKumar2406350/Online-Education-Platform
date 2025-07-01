@@ -1,0 +1,23 @@
+
+<app-header/>
+
+<div class="admin-dashboard">
+  <nav class="side-nav">
+    <ul>
+      <li><a routerLink="/admin/manage-users" routerLinkActive="active">Manage Users</a></li>
+      <li><a routerLink="/admin/manage-courses" routerLinkActive="active">Manage Courses</a></li>
+      <!-- <li><a routerLink="/admin/view-reports" routerLinkActive="active">View Reports</a></li>
+      <li><a routerLink="/admin/settings" routerLinkActive="active">Settings</a></li> -->
+    </ul>
+    <div class="logout">
+      <button (click)="onLogout()">Log Out</button>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <!-- Show placeholder text only when no route is active -->
+    <div *ngIf="isPlaceholderVisible" class="placeholder-text">Select a tab to view Content</div>
+    <router-outlet (activate)="onRouteActivate()"></router-outlet>
+  </div>
+</div>

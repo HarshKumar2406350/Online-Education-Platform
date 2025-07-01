@@ -1,0 +1,101 @@
+.assignments-container {
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 1200px;
+    background-color: #ffffff; /* Add a white background for better contrast */
+    border-radius: 12px; /* Rounded corners for modern look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 1.5rem;
+  }
+  
+  .assignments-container h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #333333; /* Darker text for better readability */
+    margin-bottom: 1rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+    font-size: 1rem;
+  }
+  
+  th {
+    background-color: #00796b; /* Teal background for headers */
+    color: #ffffff; /* White text for headers */
+    font-weight: bold;
+  }
+  
+  td {
+    background-color: #ffffff; /* Ensure rows have a white background */
+    color: #333333; /* Darker text for better visibility */
+  }
+  
+  tr:nth-child(even) td {
+    background-color: #f9f9f9; /* Alternate row color for better readability */
+  }
+  
+  button {
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px; /* Rounded corners for buttons */
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    opacity: 0.9; /* Slight opacity change on hover */
+  }
+  
+  button.edit-button {
+    background-color: #00796b; /* Teal background for edit button */
+    color: #ffffff; /* White text */
+  }
+  
+  button.edit-button:hover {
+    background-color: #004d40; /* Darker teal on hover */
+  }
+  
+  button.delete-button {
+    background-color: #d32f2f; /* Red background for delete button */
+    color: #ffffff; /* White text */
+  }
+  
+  button.delete-button:hover {
+    background-color: #b71c1c; /* Darker red on hover */
+  }
+  
+  button:disabled {
+    background-color: #cccccc; /* Disabled button background */
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 768px) {
+    .assignments-container {
+      width: 95%;
+      padding: 1rem;
+    }
+  
+    table {
+      font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+  
+    th, td {
+      padding: 0.5rem;
+    }
+  
+    button {
+      font-size: 0.8rem; /* Adjust button size for smaller screens */
+      padding: 0.4rem 0.8rem;
+    }
+  }

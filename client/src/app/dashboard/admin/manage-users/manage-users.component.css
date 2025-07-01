@@ -1,0 +1,75 @@
+.manage-users {
+    padding: 2rem;
+    background-color: #f9f9f9; /* Light background for the section */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #2c3e50; /* Darker color for better readability */
+    margin-bottom: 1.5rem;
+    text-align: center; /* Center the heading */
+  }
+    .datas{
+        color: #2c3e50;
+    }
+    .admin-row {
+        color: #27ae60; /* Green color for ADMIN rows */
+        font-weight: bold; /* Make the text bold for emphasis */
+    }
+
+
+  
+  .users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #ffffff; /* White background for the table */
+    border-radius: 8px; /* Rounded corners for the table */
+    overflow: hidden; /* Prevent overflow of rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .users-table th,
+  .users-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+    font-size: 1rem; /* Slightly larger font for better readability */
+  }
+  
+  .users-table th {
+    background-color: #34495e; /* Dark background for table headers */
+    color: #ffffff; /* White text for headers */
+    font-weight: bold; /* Bold text for headers */
+  }
+  
+  .users-table tr:nth-child(even) {
+    background-color: #f4f4f4; /* Light gray for even rows */
+  }
+  
+  .users-table tr:hover {
+    background-color: #e8f6f8; /* Light blue hover effect */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  .delete-btn {
+    background-color: #e74c3c; /* Red background for delete button */
+    color: #fff; /* White text */
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem; /* Slightly smaller font for buttons */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  }
+  
+  .delete-btn:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+  }
+  
+  .delete-btn:active {
+    transform: scale(0.95); /* Slightly shrink button on click */
+  }

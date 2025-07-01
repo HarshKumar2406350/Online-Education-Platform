@@ -1,0 +1,93 @@
+/* Login Form Container */
+form {
+  width: 95%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 3rem;
+  background: linear-gradient(180deg, #253c3c, #1d4949); /* Gradient background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.6); /* Shadow for depth */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Space between elements */
+}
+
+/* Heading */
+form h2 {
+  color: #ffffff; /* White text for contrast */
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Input Fields */
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #b2dfdb; /* Teal border */
+  border-radius: 6px; /* Rounded corners */
+  font-size: 1rem;
+  background-color: #f8fcfd; /* Light background */
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+  border-color: #00796b; /* Teal border on focus */
+  box-shadow: 0 0 5px rgba(0, 121, 107, 0.3); /* Subtle shadow on focus */
+  outline: none;
+}
+
+/* Role Buttons */
+.button-row button {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #00796b; /* Teal background */
+  color: #ffffff; /* White text */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-row button:hover {
+  background-color: #004d40; /* Darker teal on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Submit Button */
+.Sumbutton {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #1a5e5e; /* Primary background color */
+  color: #ffffff; /* White text */
+  cursor: pointer;
+  margin-top: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Sumbutton:hover {
+  background-color: #147b73; /* Change background color on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.Sumbutton:disabled {
+  background-color: #869999; /* Disabled background color */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Error Message */
+.error-message {
+  color: #f84e2c; /* Red for error messages */
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}

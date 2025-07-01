@@ -1,0 +1,108 @@
+.assignment-form-wrapper {
+    width: 50%; /* Adjust width for the dashboard */
+    min-height: calc(80vh - 4rem); /* Fit within the dashboard minus header height */
+    margin: 2rem auto; /* Center the container horizontally */
+    padding: 2rem; /* Add padding for spacing */
+    background: linear-gradient(180deg, #253c3c, #1d4949); /* Gradient background */
+    border-radius: 12px; /* Rounded corners for modern look */
+    box-shadow: 0 0 25px 3px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+  }
+  
+  .assignment-form-wrapper form {
+    width: 90%; /* Adjust width to fit within the container */
+    max-width: 40rem; /* Limit maximum width */
+    padding: 2rem; /* Add padding for spacing */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between elements */
+  }
+  
+  .assignment-form-wrapper h2 {
+    text-align: center;
+    color: #ffffff; /* White text for contrast */
+    margin-bottom: 1rem; /* Add spacing below the heading */
+    font-size: 2rem; /* Make the heading larger */
+  }
+  
+  .assignment-form-wrapper .form-group {
+    width: 100%; /* Make form fields take up full width */
+  }
+  
+  .assignment-form-wrapper label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1.25rem; /* Increase label font size */
+    color: #b2dfdb; /* Teal color for labels */
+  }
+  
+  .assignment-form-wrapper input,
+  .assignment-form-wrapper textarea,
+  .assignment-form-wrapper select {
+    width: 100%;
+    padding: 0.75rem; /* Adjust padding for inputs */
+    border: 1px solid #b2dfdb; /* Teal border */
+    border-radius: 8px; /* Rounded corners for inputs */
+    font-size: 1rem; /* Adjust font size for inputs */
+    background-color: #f8fcfd; /* Light background for inputs */
+  }
+  
+  .assignment-form-wrapper button {
+    width: 100%; /* Make the button take up full width */
+    padding: 1rem; /* Add padding for larger button */
+    background-color: #147b73; /* Teal background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 8px; /* Rounded corners for button */
+    cursor: pointer;
+    font-size: 1.25rem; /* Adjust button font size */
+  }
+  
+  .assignment-form-wrapper button:disabled {
+    background-color: #869999; /* Disabled background color */
+    cursor: not-allowed;
+  }
+  
+  .assignment-form-wrapper button:hover:not(:disabled) {
+    background-color: #0f5e5e; /* Darker teal on hover */
+  }
+  
+  .assignment-form-wrapper .error {
+    color: #f84e2c; /* Red for error messages */
+    font-size: 1rem; /* Adjust error message font size */
+    margin-top: 0.5rem;
+    text-align: left; /* Align error messages to the left */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .assignment-form-wrapper {
+      height: calc(100vh - 6rem); /* Adjust height for smaller screens */
+      padding: 1.5rem; /* Reduce padding for smaller screens */
+    }
+  
+    .assignment-form-wrapper form {
+      width: 95%; /* Adjust width for smaller screens */
+      padding: 1.5rem; /* Reduce padding for smaller screens */
+    }
+  
+    .assignment-form-wrapper h2 {
+      font-size: 1.8rem; /* Reduce heading size for smaller screens */
+    }
+  
+    .assignment-form-wrapper input,
+    .assignment-form-wrapper textarea,
+    .assignment-form-wrapper select {
+      font-size: 0.9rem; /* Adjust font size for smaller screens */
+      padding: 0.6rem; /* Reduce padding for smaller screens */
+    }
+  
+    .assignment-form-wrapper button {
+      font-size: 1rem; /* Adjust button font size for smaller screens */
+      padding: 0.8rem; /* Reduce button padding for smaller screens */
+    }
+  }

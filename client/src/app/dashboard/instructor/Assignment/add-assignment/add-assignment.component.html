@@ -1,0 +1,84 @@
+<div class="assignment-form-wrapper">
+    
+  
+    <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()" class="assignment-reactive-form">
+      <!-- Assignment Title Field -->
+      <h2>Post New Assignment</h2>
+      <div class="form-field-group">
+        <label for="title">Assignment Title:</label>
+        <input
+          type="text"
+          id="title"
+          formControlName="title"
+          class="form-input-field"
+        >
+        <div *ngIf="assignmentForm.get('title')?.invalid && (assignmentForm.get('title')?.dirty || assignmentForm.get('title')?.touched)" class="validation-error-message">
+          <div *ngIf="assignmentForm.get('title')?.errors?.['required']">Title is required.</div>
+          <div *ngIf="assignmentForm.get('title')?.errors?.['minlength']">Title must be at least 3 characters long.</div>
+        </div>
+      </div>
+  
+      <!-- Assignment Description Field -->
+      <div class="form-field-group">
+        <label for="description">Description:</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          rows="5"
+          class="form-textarea-field"
+        ></textarea>
+        <div *ngIf="assignmentForm.get('description')?.invalid && (assignmentForm.get('description')?.dirty || assignmentForm.get('description')?.touched)" class="validation-error-message">
+          <div *ngIf="assignmentForm.get('description')?.errors?.['required']">Description is required.</div>
+        </div>
+      </div>
+  
+      <!-- Total Marks Field -->
+      <div class="form-field-group">
+        <label for="marks">Total Marks:</label>
+        <input
+          type="number"
+          id="marks"
+          formControlName="totalMarks"
+          class="form-input-field"
+        >
+        <div *ngIf="assignmentForm.get('totalMarks')?.invalid && (assignmentForm.get('totalMarks')?.dirty || assignmentForm.get('totalMarks')?.touched)" class="validation-error-message">
+          <div *ngIf="assignmentForm.get('totalMarks')?.errors?.['required']">Total marks are required.</div>
+          <div *ngIf="assignmentForm.get('totalMarks')?.errors?.['min']">Total marks cannot be negative.</div>
+        </div>
+      </div>
+  
+      <!-- Due Date and Time Field -->
+      <div class="form-field-group">
+        <label for="dueDate">Due Date and Time:</label>
+        <input
+          type="datetime-local"
+          id="dueDate"
+          formControlName="dueDate"
+          class="form-input-field"
+        >
+        <div *ngIf="assignmentForm.get('dueDate')?.invalid && (assignmentForm.get('dueDate')?.dirty || assignmentForm.get('dueDate')?.touched)" class="validation-error-message">
+          <div *ngIf="assignmentForm.get('dueDate')?.errors?.['required']">Due Date and Time are required.</div>
+        </div>
+      </div>
+  
+      <!-- Assignment Serial Number Field -->
+      <div class="form-field-group">
+        <label for="serialNumber">Assignment Serial Number:</label>
+        <input
+          type="number"
+          id="serialNumber"
+          formControlName="serialNumber"
+          class="form-input-field"
+        >
+        <div *ngIf="assignmentForm.get('serialNumber')?.invalid && (assignmentForm.get('serialNumber')?.dirty || assignmentForm.get('serialNumber')?.touched)" class="validation-error-message">
+          <div *ngIf="assignmentForm.get('serialNumber')?.errors?.['required']">Serial Number is required.</div>
+          <div *ngIf="assignmentForm.get('serialNumber')?.errors?.['min']">Serial Number must be a positive number.</div>
+        </div>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="assignmentForm.invalid" class="submit-assignment-button">
+        Submit Assignment
+      </button>
+    </form>
+  </div>

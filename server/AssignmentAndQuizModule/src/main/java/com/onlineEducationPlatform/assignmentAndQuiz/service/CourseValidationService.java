@@ -28,19 +28,23 @@ public class CourseValidationService {
 
 
     public boolean validateCourseAccess(String courseId, String userId) {
+
         log.debug("Validating course access for courseId: {} and userId: {}", courseId, userId);
+
         logger.info("Validating course access for courseId: {} and userId: {}", courseId, userId);
          try {
              // Call Course Management API
              ValidationRequest  request = new ValidationRequest(courseId, userId);
+
              Map<String, Object> response = apiClient.validateCourseOwnership(request);
+
              logger.info("Course access validation response: {}", response);
-             Map<String, Object> validation = (Map<String, Object>) response.get("validation");
-             logger.info("Course access validation: {}", validation);
-             if (validation != null && Boolean.TRUE.equals(validation.get("valid"))) {
+
+             Boolean valid = (Boolean) response.get("valid");
+             if (Boolean.TRUE.equals(valid)) {
                  return true;
              }
-            return false;
+             return false;
          } catch (Exception e) {
              throw new RuntimeException("Failed to validate course access: " + e.getMessage());
          }

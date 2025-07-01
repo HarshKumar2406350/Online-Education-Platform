@@ -1,0 +1,42 @@
+<div class="course-details-container">
+    <!-- Course Details Section -->
+    <div class="details-row">
+      <div class="course-details-box">
+        <h2>Course Details</h2>
+        <p><strong>Title: </strong> {{ course.title }}</p>
+        <p><strong>Category: </strong> {{ course.category }}</p>
+        <p><strong>Instructor: </strong> {{ course.instructorId }}</p>
+        <p><strong>Created At: </strong> {{ course.createdAt | date:'EEEE, MMMM d, y h:mm a' }}</p>
+        <p><strong>Updated At: </strong> {{ course.updatedAt | date:'EEEE, MMMM d, y h:mm a' }}</p>
+        <button class="action-button view-enrollments-button" (click)="toggleEnrollments()">
+          {{ showEnrolledStudents ? 'Hide Enrolled Students' : 'View Enrolled Students' }}
+        </button>
+      </div>
+  
+      <div class="course-description-box">
+        <h2>Description</h2>
+        <p>{{ course.description }}</p>
+      </div>
+    </div>
+  
+    <!-- Enrolled Students Table -->
+    <div class="enrolled-students-box" *ngIf="showEnrolledStudents">
+      <h2>Enrolled Students</h2>
+      <table class="students-table">
+        <thead>
+          <tr>
+            <th>Enrollment ID</th>
+            <th>Student Email</th>
+            <th>Enrollment Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of enrolledStudents">
+            <td>{{ student.id }}</td>
+            <td>{{ student.studentId }}</td>
+            <td>{{ student.enrollmentDate | date:'EEEE, MMMM d, y h:mm a' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

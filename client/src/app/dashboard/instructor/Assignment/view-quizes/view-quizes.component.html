@@ -1,0 +1,31 @@
+<div class="quizzes-container">
+    <h2>Quizzes for Course: {{ courseId }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Options</th>
+          <th>Correct Answer</th>
+          <th>Created At</th>
+          <!-- <th>Updated At</th> -->
+          <th>Actions</th> <!-- Added Actions column -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let quiz of quizzes">
+          <td>{{ quiz.question }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let option of quiz.answerOptions">{{ option }}</li>
+            </ul>
+          </td>
+          <td>{{ quiz.correctAnswer }}</td>
+          <td>{{ quiz.createdAt | date: 'medium' }}</td>
+          <!-- <td>{{ quiz.updatedAt | date: 'medium' }}</td> -->
+          <td>
+            <button class="delete-button" (click)="onDeleteQuiz(quiz.id)">Delete</button> <!-- Delete button -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

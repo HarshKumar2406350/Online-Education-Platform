@@ -1,0 +1,47 @@
+.progress-container {
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #34495e;
+    margin-bottom: 2rem;
+  }
+  
+  .progress-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  .course-progress {
+    flex: 1 1 calc(33.333% - 2rem); /* Adjust width for 3 cards per row */
+    max-width: 300px;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .course-progress h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .chart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }

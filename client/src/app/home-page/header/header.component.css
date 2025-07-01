@@ -1,0 +1,65 @@
+
+header {
+    margin: 0;
+        background: linear-gradient(to left, #3a8dff, #70e1f5); /* More vibrant gradient */
+        padding: 0.5rem;
+        border-bottom-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    }
+    
+    .header-container {
+        display: flex;
+        height: 8rem;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: auto;
+        margin: auto;
+    }
+    
+    .logo img {
+        height: 6rem; /* 🔧 Increase icon size here */
+        object-fit: contain;
+        
+        /* width: 8rem; */
+        margin-left: 2rem;
+    }
+    
+    .title h1  { font-size: 3rem;
+        margin: 0;
+        text-align: center;
+        color: #ffffff;
+    }
+    
+    .navigation {
+        display: flex;
+        gap: 1rem;
+        margin-right: 4rem;
+    }
+    
+    button {
+        padding: 0.5rem 1rem;
+        font-size: 1.5rem;
+        border-radius: 6px;
+        border: none;
+        background-color: transparent;
+        color: #ffffff;
+        cursor: pointer;
+      }
+      
+      button:hover,
+      button:focus {
+        background-color: #319890;
+      }
+    
+    @media (min-width: 768px) {
+        .logo img {
+            width: 5rem; /* 🔧 Adjust icon width here for larger screens */
+        }
+    
+        .title h1 {
+            font-size: 2rem;
+        }
+    }
+    

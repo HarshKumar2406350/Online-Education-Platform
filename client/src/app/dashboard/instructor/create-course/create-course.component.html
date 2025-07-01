@@ -1,0 +1,36 @@
+<div class="create-course-container">
+    <h2>Create a New Course</h2>
+    <form [formGroup]="createCourseForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" formControlName="category">
+              <option value="">Select a category</option>
+              <option value="PRODUCTIVITY">PRODUCTIVITY</option>
+              <option value="BUSINESS">BUSINESS</option>
+              <option value="TECHNOLOGY">TECHNOLOGY</option>
+              <option value="FINANCIAL">FINANCIAL</option>
+              <option value="EDUCATION">EDUCATION</option>
+            </select>
+            <p class="error" *ngIf="createCourseForm.get('category')?.touched && createCourseForm.get('category')?.invalid">
+              Category is required.
+            </p>
+          </div>
+        <div class="form-group">
+            <label for="title">Course Title</label>
+            <input id="title" type="text" formControlName="title" placeholder="Enter course title" />
+            <p class="error" *ngIf="createCourseForm.get('title')?.touched && createCourseForm.get('title')?.invalid">
+            Title is required.
+            </p>
+        </div>
+  
+        <div class="form-group">
+            <label for="description">Course Content</label>
+            <textarea id="description" formControlName="description" placeholder="Enter course description"></textarea>
+            <p class="error" *ngIf="createCourseForm.get('description')?.touched && createCourseForm.get('description')?.invalid">
+            Description is required.
+            </p>
+        </div>
+        <button type="submit" [disabled]="createCourseForm.invalid">Create Course</button>
+    </form>
+  </div>

@@ -1,0 +1,116 @@
+.course-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+  }
+  
+  .details-row {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .course-details-box {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .course-details-box h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #147b73;
+  }
+  
+  .course-details-box p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333333;
+  }
+  
+  .course-description-box {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .course-description-box h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #147b73;
+  }
+  
+  .course-description-box p {
+    font-size: 1rem;
+    color: #333333;
+  }
+  
+  .enrolled-students-box {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .enrolled-students-box h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #147b73;
+  }
+  
+  .students-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .students-table th,
+  .students-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+    font-size: 1rem;
+    color: #333333; /* Ensure text is visible */
+  }
+  
+  .students-table th {
+    background-color: #34495e;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .students-table tr:nth-child(even) {
+    background-color: #f4f4f4;
+  }
+  
+  .students-table tr:hover {
+    background-color: #e8f6f8;
+    cursor: pointer;
+  }
+  .action-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    background-color: #3498db; /* Blue background */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block; /* Ensure proper alignment */
+    margin-top: 1rem; /* Add spacing from other elements */
+  }
+  
+  .action-button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+  
+  .action-button:active {
+    transform: scale(0.95); /* Slightly shrink on click */
+  }

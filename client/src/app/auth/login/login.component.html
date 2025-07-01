@@ -1,0 +1,32 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Login</h2>
+    
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  
+    <div class="control-row">
+      <div class="control no-margin">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" />
+        <p class="control-error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+          Invalid Email Address Entered.
+        </p>
+      </div>
+  
+      <div class="control no-margin">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" />
+        <p class="control-error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+          Invalid Password Entered - must be at least 6 characters long.</p>
+      </div>
+    </div>
+  
+    <div class="button-row">
+      <button class="button" type="button" (click)="selectRole('STUDENT')">Student</button>
+      <button class="button" type="button" (click)="selectRole('INSTRUCTOR')">Instructor</button>
+      <button class="button" type="button" (click)="selectRole('ADMIN')">Admin</button>
+    </div>
+  
+    <button class="Sumbutton" type="submit" [disabled]="!selectedRole || loginForm.invalid">Login</button>
+  </form>

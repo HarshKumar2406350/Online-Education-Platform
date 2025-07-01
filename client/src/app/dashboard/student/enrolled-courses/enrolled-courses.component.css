@@ -1,0 +1,18 @@
+.enrolled-courses-container {
+    padding: 2rem;
+    background-color: #f4f4f4; /* Light gray background for the page */
+    min-height: 83vh; /* Ensure full-page height */}
+  
+  h2 {
+    text-align: center;
+    font-size: 2rem; /* Larger heading for emphasis */
+    color: #2c3e50; /* Dark blue for better readability */
+    margin-bottom: 1.5rem;
+  }
+  
+  .courses-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Space between course cards */
+    justify-content: center; /* Center course cards */
+  }

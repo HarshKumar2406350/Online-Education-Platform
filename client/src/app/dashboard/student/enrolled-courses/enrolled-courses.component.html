@@ -1,0 +1,10 @@
+<div class="enrolled-courses-container">
+    <h2>Your Enrolled Courses</h2>
+    <div class="courses-list">
+        <App-course-card
+        *ngFor="let enrollment of enrolledCourses"
+        [course]="enrollment.course"
+        (click)="onCourseClick(enrollment.course)"
+      ></App-course-card>
+    </div>
+  </div>

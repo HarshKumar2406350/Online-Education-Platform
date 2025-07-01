@@ -1,0 +1,113 @@
+/* Form Container */
+form {
+  width: 90%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(180deg, #253c3c, #1d4949); /* Gradient background */
+  border-radius: 12px; /* Increased border radius for modern look */
+  box-shadow: 0 0 25px 3px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+  display: flex;
+  flex-direction: column;
+  /* gap: 1.5rem; Space between elements */
+}
+
+/* Heading */
+form h2 {
+  color: #ffffff; /* White text for contrast */
+  font-size: 2.5rem; /* Larger font size for emphasis */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase; /* Add uppercase for a bold look */
+}
+
+/* Form Controls */
+.control {
+  margin-bottom: 1rem; /* Add spacing between form controls */
+}
+
+.control label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #b2dfdb; /* Teal color for labels */
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.control input,
+.control select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px; /* Increased border radius for modern look */
+  border: 1px solid #b2dfdb; /* Teal border */
+  background-color: #f8fcfd; /* Light background for inputs */
+  color: #333333; /* Dark text for readability */
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.control input:focus,
+.control select:focus {
+  border-color: #00796b; /* Teal border on focus */
+  box-shadow: 0 0 5px rgba(0, 121, 107, 0.3); /* Subtle shadow on focus */
+  outline: none;
+}
+
+/* Error Messages */
+.control-error {
+  color: #f84e2c; /* Red for error messages */
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Submit Button */
+.Sumbutton {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-radius: 8px; /* Increased border radius for modern look */
+  border: none;
+  background-color: #00796b; /* Teal background */
+  color: #ffffff; /* White text */
+  cursor: pointer;
+  margin-top: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.Sumbutton:hover {
+  background-color: #004d40; /* Darker teal on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.Sumbutton:disabled {
+  background-color: #869999; /* Disabled background color */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  form {
+    width: 95%;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+
+  form h2 {
+    font-size: 2rem;
+  }
+
+  .control input,
+  .control select {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+  }
+
+  .Sumbutton {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}

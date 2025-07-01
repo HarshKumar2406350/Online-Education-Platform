@@ -1,0 +1,19 @@
+.manage-courses-container {
+  padding: 2rem;
+  background-color: #f4f4f4; /* Light gray background for the page */
+  min-height: 83vh; /* Ensure full-page height */
+}
+
+.manage-courses-container h2 {
+  font-size: 2rem; /* Larger heading */
+  color: #147b73; /* Primary color for heading */
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.courses-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Increased gap for better spacing */
+  justify-content: center; /* Center the cards */
+}

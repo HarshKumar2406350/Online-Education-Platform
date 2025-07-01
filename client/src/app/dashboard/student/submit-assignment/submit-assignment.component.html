@@ -1,0 +1,20 @@
+<div class="submit-assignment-container">
+    <h2>Submit Assignment</h2>
+    <form (ngSubmit)="onSubmit()">
+      <label for="answer">Your Answer:</label>
+      <textarea
+        id="answer"
+        [(ngModel)]="answer"
+        name="answer"
+        rows="10"
+        required
+        minlength="10"
+        maxlength="10000"
+        placeholder="Write your answer here..."
+      ></textarea>
+      <div class="action-buttons">
+        <button type="submit" class="submit-button">Submit</button>
+        <button type="button" class="cancel-button" (click)="onCancel()">Cancel</button>
+      </div>
+    </form>
+  </div>

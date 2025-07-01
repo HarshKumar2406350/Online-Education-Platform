@@ -1,0 +1,34 @@
+.course-card {
+    width: 300px; /* Fixed width for all cards */
+    border: 1px solid #ddd; /* Subtle border for a clean look */
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: #ffffff; /* White background for better contrast */
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .course-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    transform: translateY(-5px); /* Slight lift effect */
+  }
+  
+  .course-card h3 {
+    font-size: 1.5rem; /* Larger font for course title */
+    color: #333333; /* Dark gray for better readability */
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .course-card p {
+    font-size: 1rem; /* Standard font size for details */
+    color: #555555; /* Medium gray for secondary text */
+    margin: 0.5rem 0;
+  }
+  
+  .course-card strong {
+    color: #147b73; /* Highlighted text color */
+  }

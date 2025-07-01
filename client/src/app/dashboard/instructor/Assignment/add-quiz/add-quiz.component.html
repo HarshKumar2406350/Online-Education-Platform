@@ -1,0 +1,27 @@
+<div class="quiz-container">
+    <h2>Add Quiz for Course: {{ courseId }}</h2>
+    <form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+      <label for="question">Question:</label>
+      <input id="question" formControlName="question" type="text" />
+  
+      <label>Answer Options:</label>
+      <div formArrayName="answerOptions">
+        <label for="option-0">Option 1:</label>
+        <input id="option-0" formControlName="0" type="text" />
+  
+        <label for="option-1">Option 2:</label>
+        <input id="option-1" formControlName="1" type="text" />
+  
+        <label for="option-2">Option 3:</label>
+        <input id="option-2" formControlName="2" type="text" />
+  
+        <label for="option-3">Option 4:</label>
+        <input id="option-3" formControlName="3" type="text" />
+      </div>
+  
+      <label for="correctAnswer">Correct Answer:</label>
+      <input id="correctAnswer" formControlName="correctAnswer" type="text" />
+  
+      <button type="submit">Submit</button>
+    </form>
+  </div>

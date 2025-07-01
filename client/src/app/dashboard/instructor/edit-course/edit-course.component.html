@@ -1,0 +1,34 @@
+<div class="edit-course-container">
+    <h2>Edit Course</h2>
+    <form [formGroup]="editCourseForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <input id="category" formControlName="category" type="text" />
+            <div *ngIf="editCourseForm.get('category')?.invalid && editCourseForm.get('category')?.touched">
+              <small class="error">Category is required.</small>
+            </div>
+        </div>
+
+
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" formControlName="title" type="text" />
+        <div *ngIf="editCourseForm.get('title')?.invalid && editCourseForm.get('title')?.touched">
+          <small class="error">Title is required and must be at least 3 characters.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description"></textarea>
+        <div *ngIf="editCourseForm.get('description')?.invalid && editCourseForm.get('description')?.touched">
+          <small class="error">Description is required and must be at least 10 characters.</small>
+        </div>
+      </div>
+  
+      
+  
+      <button type="submit" class="submit-button">Update Course</button>
+    </form>
+  </div>

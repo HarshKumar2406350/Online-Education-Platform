@@ -1,8 +1,10 @@
 package com.onlineEducationPlatform.CourseManagement.controller;
 
 import com.onlineEducationPlatform.CourseManagement.dto.request.CourseRequest;
+import com.onlineEducationPlatform.CourseManagement.dto.request.ValidationRequest;
 import com.onlineEducationPlatform.CourseManagement.dto.response.CourseResponse;
 import com.onlineEducationPlatform.CourseManagement.dto.response.CourseDeleteResponse;
+import com.onlineEducationPlatform.CourseManagement.dto.response.ValidationResponse;
 import com.onlineEducationPlatform.CourseManagement.service.CourseService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +14,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/CourseManagement")
@@ -67,5 +71,15 @@ public class CourseController {
     public ResponseEntity<List<CourseResponse>> getInstructorCourses(Authentication authentication) {
         List<CourseResponse> courses = courseService.getCoursesByInstructor(authentication.getName());
         return ResponseEntity.ok(courses);
+    }
+
+    @PostMapping("/courses/validate")
+    public ResponseEntity<ValidationResponse> validateCourseOwnership(
+            @RequestBody ValidationRequest request,
+            Authentication authentication) {
+        ValidationResponse response = courseService.ValidateCourseOwnership(request.getCourseId(),request.getUserId());
+
+
+        return ResponseEntity.ok(response);
     }
 }

@@ -1,0 +1,18 @@
+<div class="view-courses-container">
+    <h2>Available Courses</h2>
+    <div class="courses-list">
+      <App-course-card
+        *ngFor="let course of courses"
+        [course]="course"
+        (click)="onCourseClick(course)">
+      </App-course-card>
+    </div>
+  
+    <!-- Enrollment Dialog -->
+    <app-enroll
+      *ngIf="showDialog"
+      [courseId]="selectedCourseId"
+      [courseTitle]="selectedCourseTitle"
+      (enrollmentResult)="onEnrollmentResult($event)">
+    </app-enroll>
+  </div>

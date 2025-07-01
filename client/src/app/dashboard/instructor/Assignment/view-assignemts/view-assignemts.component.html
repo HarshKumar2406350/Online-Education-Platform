@@ -1,0 +1,33 @@
+<div class="assignments-container">
+    <h2>Assignments for Course: {{ courseId }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Total Marks</th>
+          <th>Due Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let assignment of assignments">
+          <td>{{ assignment.title }}</td>
+          <td>{{ assignment.description }}</td>
+          <td>{{ assignment.totalMarks }}</td>
+          <td>{{ assignment.dueDate | date: 'medium' }}</td>
+          <td>
+            <button class="edit-button" (click)="onEditAssignment(assignment.id)">Edit</button>
+            <button class="delete-button" (click)="onDeleteAssignment(assignment.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <app-delete-assignment
+        *ngIf="showDialog"
+        [assignmentId]="selectedAssignmentId"
+        (deleteResult)="handleDeleteResult($event)"
+    />
+
+  </div>

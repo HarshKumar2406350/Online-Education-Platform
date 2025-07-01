@@ -1,0 +1,42 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>Sign Up</h2>
+  
+    <div class="control">
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" />
+      <p class="control-error" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+        Name must be between 3 and 50 characters.
+      </p>
+    </div>
+  
+    <div class="control">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+      <p class="control-error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+        Invalid email format.
+      </p>
+    </div>
+  
+    <div class="control">
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" />
+      <p class="control-error" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+        Password must be at least 6 characters long.
+      </p>
+    </div>
+  
+    <div class="control">
+      <label for="role">Role</label>
+      <select id="role" formControlName="role">
+        <option value="">Select Role</option>
+        <option value="STUDENT">Student</option>
+        <option value="INSTRUCTOR">Instructor</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+      <p class="control-error" *ngIf="registerForm.get('role')?.touched && registerForm.get('role')?.invalid">
+        Role is required.
+      </p>
+    </div>
+  
+    <button class="Sumbutton" type="submit" [disabled]="registerForm.invalid">Sign Up</button>
+  </form>
