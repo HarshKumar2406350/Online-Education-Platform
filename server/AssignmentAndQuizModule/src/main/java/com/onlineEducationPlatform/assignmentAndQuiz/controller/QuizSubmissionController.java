@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/quiz-submissions")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class QuizSubmissionController {
 
     private final QuizSubmissionService submissionService;
@@ -56,6 +58,29 @@ public class QuizSubmissionController {
                 .body(submissionService.getSubmissionsByCourse(courseId, authentication.getName()))
                 .build());
     }
+
+
+    @GetMapping("/student/{studentId}/course/{courseId}/quiz/{quizId}/marks")
+    public ResponseEntity<ApiResponse<Integer>> getMarksByStudentIdAndCourseIdAndQuizId(
+            @PathVariable String studentId,
+            @PathVariable String courseId,
+            @PathVariable String quizId) {
+        Optional<Integer> marks = submissionService.getMarksByStudentIdAndCourseIdAndQuizId(studentId, courseId, quizId);
+        if (marks.isPresent()) {
+            return ResponseEntity.ok(ApiResponse.<Integer>builder()
+                    .message("Marks retrieved successfully")
+                    .statusCode(200)
+                    .body(marks.get())
+                    .build());
+        } else {
+            return ResponseEntity.ok(ApiResponse.<Integer>builder()
+                    .message("No submission found for the given details")
+                    .statusCode(404)
+                    .body(null)
+                    .build());
+        }
+    }
+
 
     @GetMapping("/student/{studentId}/course/{courseId}")
     public ResponseEntity<ApiResponse<List<QuizSubmitResponse>>> getSubmissionsByStudent(

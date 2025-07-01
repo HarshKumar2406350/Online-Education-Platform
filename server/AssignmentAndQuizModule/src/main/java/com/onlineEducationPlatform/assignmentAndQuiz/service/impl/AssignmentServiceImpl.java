@@ -83,7 +83,6 @@ public class AssignmentServiceImpl implements AssignmentService {
 
     @Override
     public List<AssignmentResponse> getAssignmentsByCourse(String courseId, String userId) {
-//        validateUserAccess(courseId, userId);
         return assignmentRepository.findByCourseIdOrderBySequenceNoAsc(courseId)
                 .stream()
                 .map(this::mapToResponse)

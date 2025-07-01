@@ -5,6 +5,7 @@ import com.onlineEducationPlatform.assignmentAndQuiz.dto.response.QuizSubmitResp
 import com.onlineEducationPlatform.assignmentAndQuiz.entity.QuizSubmission;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface QuizSubmissionService {
     QuizSubmitResponse submitQuiz(QuizSubmitRequest request);
@@ -22,4 +23,7 @@ public interface QuizSubmissionService {
     List<QuizSubmitResponse> getPendingSubmissionsByCourse(String courseId, String instructorId);
     
     List<QuizSubmitResponse> getCheckedSubmissionsByCourse(String courseId, String instructorId);
+
+
+    Optional<Integer> getMarksByStudentIdAndCourseIdAndQuizId(String studentId, String courseId, String quizId);
 }

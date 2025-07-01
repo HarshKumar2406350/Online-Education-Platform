@@ -20,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -128,6 +129,15 @@ QuizSubmissionServiceImpl implements QuizSubmissionService {
                 .stream()
                 .map(this::mapToSubmissionResponse)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<Integer> getMarksByStudentIdAndCourseIdAndQuizId(String studentId, String courseId, String quizId) {
+        Optional<QuizSubmission> submission = submissionRepository.findByStudentIdAndCourseIdAndQuizId(studentId, courseId, quizId);
+        if (submission.isPresent()) {
+            return Optional.of(submission.get().getMarksObtained());
+        }
+        return Optional.empty();
     }
 
 

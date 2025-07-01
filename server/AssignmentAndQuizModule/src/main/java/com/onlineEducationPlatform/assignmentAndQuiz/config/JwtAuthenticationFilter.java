@@ -18,7 +18,11 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 @Slf4j
@@ -50,36 +54,44 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
     
-        try {
-            log.debug("Attempting to parse JWT token");
-            Claims claims = Jwts.parserBuilder()
-                .setSigningKey(secretKey.getBytes())
-                .build()
-                .parseClaimsJws(jwt)
-                .getBody();
-    
-            String userEmail = claims.getSubject();
-            String role = claims.get("role", String.class);
-            log.debug("JWT Claims - Email: {}, Role: {}", userEmail, role);
+        // Inside doFilterInternal method:
+try {
+    Claims claims = Jwts.parserBuilder()
+        .setSigningKey(secretKey.getBytes())
+        .build()
+        .parseClaimsJws(jwt)
+        .getBody();
 
-            String formattedRole = role.startsWith("ROLE_") ? role : "ROLE_" + role;
-            log.debug("Formatted role: {}", formattedRole);
+    String userEmail = claims.getSubject();
+    String role = claims.get("role", String.class);
+    log.debug("JWT Claims - Email: {}, Role: {}", userEmail, role);
+
+    // Handle multiple roles if present
+    List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+    if (role.contains(",")) {
+        Arrays.stream(role.split(","))
+            .map(r -> r.startsWith("ROLE_") ? r : "ROLE_" + r.trim())
+            .map(SimpleGrantedAuthority::new)
+            .forEach(authorities::add);
+    } else {
+        String formattedRole = role.startsWith("ROLE_") ? role : "ROLE_" + role;
+        authorities.add(new SimpleGrantedAuthority(formattedRole));
+    }
+
+    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+        userEmail,
+        null,
+        authorities
+    );
     
-            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                userEmail,
-                null,
-                Collections.singletonList(new SimpleGrantedAuthority(formattedRole))
-            );
-            
-            authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-            SecurityContextHolder.getContext().setAuthentication(authToken);
-            log.debug("Authentication token set in SecurityContext with authorities: {}", 
+    authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+    SecurityContextHolder.getContext().setAuthentication(authToken);
+    log.debug("Authentication token set in SecurityContext with authorities: {}", 
         authToken.getAuthorities());
-            
-        } catch (Exception e) {
-            log.error("JWT Token validation failed", e);
-            SecurityContextHolder.clearContext();
-        }
+} catch (Exception e) {
+    log.error("JWT Token validation failed", e);
+    SecurityContextHolder.clearContext();
+}
     
         log.debug("===== JWT Filter End =====");
         filterChain.doFilter(request, response);

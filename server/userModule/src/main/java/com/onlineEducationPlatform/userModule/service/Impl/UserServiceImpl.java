@@ -1,13 +1,17 @@
 package com.onlineEducationPlatform.userModule.service.Impl;
 
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
-import org.slf4j.Logger;
+
+
 import java.util.EnumSet;
+import java.util.List;
 import java.util.regex.Pattern;
 
-import com.onlineEducationPlatform.userModule.service.Impl.JwtService;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.onlineEducationPlatform.userModule.dto.LoginDto;
 import com.onlineEducationPlatform.userModule.dto.UserDto;
 import com.onlineEducationPlatform.userModule.entity.User;
@@ -15,14 +19,10 @@ import com.onlineEducationPlatform.userModule.entity.UserRole;
 import com.onlineEducationPlatform.userModule.mapper.UserMapper;
 import com.onlineEducationPlatform.userModule.repository.UserRepository;
 import com.onlineEducationPlatform.userModule.service.UserService;
+
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -32,8 +32,6 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final UserMapper userMapper;
-
-    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Value("${cookie.jwt.name}")
     private String jwtCookieName;
@@ -53,9 +51,8 @@ public class UserServiceImpl implements UserService {
         }
 
         if (!EnumSet.allOf(UserRole.class).contains(userDto.getRole())) {
-
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid role");
-    }
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid role");
+        }
 
         User user = userMapper.toEntity(userDto);
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
@@ -66,45 +63,47 @@ public class UserServiceImpl implements UserService {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error creating user");
         }
     }
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll(); // Fetch all users from the database
+    }
+
+    @Override
+    public void deleteUserById(String userId) {
+        if (!userRepository.existsById(userId)) {
+            throw new IllegalArgumentException("User with ID " + userId + " does not exist.");
+        }
+        userRepository.deleteById(userId); // Delete user by ID
+    }
 
     @Override
     public UserDto login(LoginDto loginDto, HttpServletResponse response) {
-        logger.info("Attempting to login user with email: {}", loginDto.getEmail());
         User user = userRepository.findByEmail(loginDto.getEmail())
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials"));
-    
-        logger.info("User with email {} found", loginDto.getEmail());
-    
-
-        logger.info("Raw password from request: {}", loginDto.getPassword());
-        logger.info("Stored encoded password: {}", user.getPassword());
-    
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials"));
 
         if (!passwordEncoder.matches(loginDto.getPassword(), user.getPassword())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
         }
-        
-        logger.info("User with email {} authenticated successfully", loginDto.getEmail());
-    
+
         if (!user.getRole().name().equals(loginDto.getRole())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid role");
         }
-    
+
         String token = jwtService.generateToken(user.getEmail(), user.getRole().name());
         setJwtCookie(response, token);
-    
+
         UserDto userDto = userMapper.toDto(user);
         userDto.setToken(token);
         return userDto;
     }
-    
+
     @Override
     public void logout(HttpServletResponse response) {
         Cookie cookie = new Cookie(jwtCookieName, null);
         cookie.setMaxAge(0);
         cookie.setPath("/");
         cookie.setHttpOnly(true);  // Add this
-        cookie.setSecure(true);  
+        cookie.setSecure(true);
         response.addCookie(cookie);
     }
 
@@ -112,7 +111,7 @@ public class UserServiceImpl implements UserService {
     public UserDto getUserDetails(String token) {
         String email = jwtService.extractUsername(token);
         User user = userRepository.findByEmail(email)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
         return userMapper.toDto(user);
     }
 
@@ -120,7 +119,7 @@ public class UserServiceImpl implements UserService {
     public UserDto updateUserDetails(String token, UserDto userDto) {
         String email = jwtService.extractUsername(token);
         User user = userRepository.findByEmail(email)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
         user.setName(userDto.getName());
         if (userDto.getPassword() != null) {
@@ -141,20 +140,20 @@ public class UserServiceImpl implements UserService {
 
     private void validatePassword(String password) {
         if (password == null || password.length() < 6) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, 
-                "Password must be at least 6 characters long");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Password must be at least 6 characters long");
         }
-        
+
         // Check for at least one uppercase letter
         if (!Pattern.compile("[A-Z]").matcher(password).find()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, 
-                "Password must contain at least one uppercase letter");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Password must contain at least one uppercase letter");
         }
-        
+
         // Check for at least one number
         if (!Pattern.compile("[0-9]").matcher(password).find()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, 
-                "Password must contain at least one number");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Password must contain at least one number");
         }
     }
 }

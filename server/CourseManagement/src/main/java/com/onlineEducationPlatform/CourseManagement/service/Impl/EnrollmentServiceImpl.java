@@ -67,9 +67,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
     @Override
     public List<EnrollmentResponse> getEnrollmentsByCourse(String courseId, String instructorId) {
-        if (!courseRepository.existsByIdAndInstructorId(courseId, instructorId)) {
-            throw new UnauthorizedAccessException("Not authorized to view these enrollments");
-        }
+//        if (!courseRepository.existsByIdAndInstructorId(courseId, instructorId)) {
+//            throw new UnauthorizedAccessException("Not authorized to view these enrollments");
+//        }
         return enrollmentRepository.findByCourseId(courseId).stream()
             .map(enrollmentMapper::toResponse)
             .collect(Collectors.toList());

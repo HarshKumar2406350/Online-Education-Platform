@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/assignment-submissions")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class AssignmentSubmissionController {
 
     private final AssignmentSubmissionService submissionService;

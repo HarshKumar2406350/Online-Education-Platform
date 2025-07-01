@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/assignments")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class AssignmentController {
 
     private final AssignmentService assignmentService;
@@ -83,13 +84,27 @@ public class AssignmentController {
     }
 
     @GetMapping("/course/{courseId}")
-    public ResponseEntity<List<AssignmentResponse>> getAssignmentsByCourse(
+    public ResponseEntity<ApiResponse<List<AssignmentResponse>>> getAssignmentsByCourse(
             @PathVariable String courseId,
             Authentication authentication) {
-                
-        return ResponseEntity.ok(assignmentService.getAssignmentsByCourse(courseId, authentication.getName()));
+        if (authentication == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ApiResponse.<List<AssignmentResponse>>builder()
+                    .message("User not authenticated")
+                    .statusCode(401)
+                    .build());
+        }
+        
+        List<AssignmentResponse> assignments = assignmentService.getAssignmentsByCourse(courseId, authentication.getName());
+        
+        return ResponseEntity.ok(ApiResponse.<List<AssignmentResponse>>builder()
+            .message("Assignments retrieved successfully")
+            .statusCode(200)
+            .body(assignments)
+            .build());
     }
 
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAssignment(
             @PathVariable String id,

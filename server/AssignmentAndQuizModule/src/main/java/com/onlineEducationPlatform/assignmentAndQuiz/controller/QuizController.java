@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/quizzes")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class QuizController {
 
     private final QuizService quizService;

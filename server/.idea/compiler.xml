@@ -20,11 +20,22 @@
         </processorPath>
         <module name="CourseManagement" />
       </profile>
+      <profile name="Annotation profile for Communication-Module" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="Communication-Module" />
+      </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="AssignmentAndQuizModule" options="-parameters" />
+      <module name="Communication-Module" options="-parameters" />
       <module name="CourseManagement" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
       <module name="service-registry" options="-parameters" />
